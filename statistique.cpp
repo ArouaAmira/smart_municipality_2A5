@@ -1,6 +1,4 @@
-
 #include "statistique.h"
-#include "ui_statistique.h"
 
 statistique::statistique(QWidget *parent) :
     QDialog(parent),
@@ -18,7 +16,7 @@ int statistique::Stat_partie2()
 {
     QSqlQuery query;
     int count=0 ;
-    QSqlQuery requete("select * from encaissement where montant_encaissement BETWEEN '1' AND '100'") ;
+    QSqlQuery requete("select * from equipement where reference BETWEEN 'noir' AND 'gris'") ;
     while(requete.next())
     {
             count++ ;
@@ -31,7 +29,7 @@ int statistique::Stat_partie3()
 {
     QSqlQuery query;
     int count=0 ;
-    QSqlQuery requete("select * from encaissement where montant_encaissement BETWEEN '101' AND '500'") ;
+    QSqlQuery requete("select * from equipement where reference BETWEEN 'choix multiples' AND 'choix unique'") ;
     while(requete.next())
     {
             count++ ;
@@ -44,7 +42,7 @@ int statistique::Stat_partie4()
 {
     QSqlQuery query;
     int count=0 ;
-    QSqlQuery requete("select * from encaissement where montant_encaissement BETWEEN '501' AND '10000'") ;
+    QSqlQuery requete("select * from equipement where reference BETWEEN '50pixel' AND '40pixel'") ;
     while(requete.next())
     {
             count++ ;
@@ -82,12 +80,12 @@ void statistique::paintEvent(QPaintEvent *)
 
     painter.setBrush(Qt::blue);
     painter.drawPie(size,0,16*y);
-    ui->label_2->setText("blue:1-100") ;
+    ui->label_2->setText("green") ;
     painter.setBrush(Qt::green);
     painter.drawPie(size,16*y,16*m);
-    ui->label_3->setText("green:101-500") ;
+    ui->label_3->setText("blue") ;
     painter.setBrush(Qt::red);
     painter.drawPie(size,16*(m+y),16*z);
-    ui->label_4->setText("red:501-10000") ;
+    ui->label_4->setText("red") ;
 
 }
